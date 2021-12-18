@@ -1,1 +1,1 @@
-module.exports = { uri: '' };
+module.exports = {uri: ''};

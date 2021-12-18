@@ -30,9 +30,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Lint commit message
-          command: npx commitlint --from \"origin/develop\"
-      - run:
           name: Type Check
           command: npm run typecheck
       - run:
@@ -47,8 +44,13 @@ jobs:
           path: ./reports/junit/
       - store_artifacts:
           path: ./reports/junit
-      - sonarcloud/scan
       - store_artifacts:
           path: coverage
           destination: coverage
 
+# ********************* Workflows ********************
+workflows:
+  version: 2
+  test_and_tag:
+    jobs:
+      - setup_and_test

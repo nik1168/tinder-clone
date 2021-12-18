@@ -3,8 +3,8 @@ import {
   NavigationContext,
   NavigationProp,
 } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import React, { ComponentType, FC, ReactNode } from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import React, {ComponentType, FC, ReactNode} from 'react';
 
 import fakeNavigation from './navigation';
 
@@ -28,7 +28,7 @@ const MockedNavigator: FC<{
   // https://github.com/react-navigation/react-navigation/issues/8517#issuecomment-663838298
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name={name} initialParams={params}>
           {(): JSX.Element => (
             <NavigationContext.Provider value={navigation}>

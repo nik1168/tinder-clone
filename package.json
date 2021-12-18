@@ -7,14 +7,29 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "eslint-plugin-react-native-a11y": "^3.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "react": "17.0.2",
     "react-native": "0.66.3",
+    "react-native-gesture-handler": "^2.1.0",
     "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
@@ -38,6 +53,7 @@
     "jest-junit": "^12.0.0",
     "jest-react-native": "18.0.0",
     "jest-styled-components": "7.0.3",
+    "lint-staged": "^11.0.1",
     "metro-react-native-babel-preset": "^0.66.2",
     "react-test-renderer": "17.0.2",
     "ts-jest": "^26.5.6",
@@ -45,5 +61,17 @@
   },
   "resolutions": {
     "@types/react": "^17"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run coverage",
+      "pre-commit": "npm run typecheck && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }

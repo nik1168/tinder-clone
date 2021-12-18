@@ -21,7 +21,7 @@ const navigation = {
   }),
   dangerouslyGetParent: jest
     .fn()
-    .mockReturnValue({ dangerouslyGetState: jest.fn(), setOptions: jest.fn() }),
+    .mockReturnValue({dangerouslyGetState: jest.fn(), setOptions: jest.fn()}),
   addListener: jest.fn(),
   removeListener: jest.fn(),
   emit: jest.fn(),
