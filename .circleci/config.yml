@@ -47,8 +47,14 @@ jobs:
           path: ./reports/junit/
       - store_artifacts:
           path: ./reports/junit
-      - sonarcloud/scan
       - store_artifacts:
           path: coverage
           destination: coverage
 
+# ********************* Workflows ********************
+workflows:
+  version: 2
+  test_and_tag:
+    jobs:
+      - setup_and_test:
+          context: default
