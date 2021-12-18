@@ -1,6 +1,4 @@
 node_modules
-e2e
-e2e-detox
 android
 ios
 types.d.ts

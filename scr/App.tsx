@@ -1,11 +1,9 @@
 import React from 'react';
-import StackNavigator from "./navigation/StackNavigator";
+
+import StackNavigator from './navigation/StackNavigator';
 
 const App = () => {
-
-  return (
-      <StackNavigator/>
-  );
+  return <StackNavigator />;
 };
 
 export default App;
