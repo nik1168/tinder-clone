@@ -1,0 +1,54 @@
+version: 2.1
+
+# ********************* Jobs ********************
+jobs:
+  setup_and_test:
+    docker:
+      - image: cimg/node:14.16
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package-lock.json" }}-{{ arch }}
+      - run:
+          name: configure npmrc
+          command: echo -e "//jfrog.aaqua.cloud/artifactory/api/npm/aaqua-npm/:_auth=$ARTIFACTORY_CLOUD_NPM_AUTH_TOKEN\n//jfrog.aaqua.cloud/artifactory/api/npm/aaqua-npm/:email=circleci@aaqua.live\n//jfrog.aaqua.cloud/artifactory/api/npm/aaqua-npm/:always-auth=true" >> ./.npmrc
+      - run:
+          name: Install node_modules
+          command: |
+            #!/bin/sh
+            if [ ! -d "node_modules" ]
+            then
+              npm i
+            fi
+      - save_cache:
+          key: node-v1-{{ checksum "package-lock.json" }}-{{ arch }}
+          paths:
+            - node_modules
+      - run:
+          name: Lint commit message
+          command: npx commitlint --from \"origin/develop\"
+      - run:
+          name: Type Check
+          command: npm run typecheck
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Test
+          command: npm run test -- --ci --maxWorkers 2 --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/junit
+      - sonarcloud/scan
+      - store_artifacts:
+          path: coverage
+          destination: coverage
+
