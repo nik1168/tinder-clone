@@ -56,5 +56,4 @@ workflows:
   version: 2
   test_and_tag:
     jobs:
-      - setup_and_test:
-          context: default
+      - setup_and_test
