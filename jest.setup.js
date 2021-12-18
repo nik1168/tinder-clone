@@ -1,2 +1,2 @@
-global.__reanimatedWorkletInit = jest.fn();
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
