@@ -5,7 +5,7 @@ import {Button, Text, View} from 'react-native';
 
 import {RootStackParams, RootStackRouteNames} from '../../navigation/typings';
 
-const HomeScreen = () => {
+const HomeScreen = (): JSX.Element => {
   const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
   const onPress = () => {

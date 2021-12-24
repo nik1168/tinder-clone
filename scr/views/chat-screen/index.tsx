@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const ChatScreen = () => {
+const ChatScreen = (): JSX.Element => {
   return (
     <View>
       <Text>I am the chat screen</Text>
