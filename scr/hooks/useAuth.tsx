@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import React, {
@@ -67,7 +68,6 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
         user,
         signInWithGoogle,
       }}>
-      {/*istanbul ignore next*/}
       {!loadingInitial ? children : null}
       {errorAuth ?? null}
     </AuthContext.Provider>
