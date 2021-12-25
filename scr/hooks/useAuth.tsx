@@ -22,6 +22,7 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
   const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
 
+  /* istanbul ignore next */
   const onAuthStateChanged = useCallback(
     (userAuth: FirebaseAuthTypes.User | null) => {
       if (userAuth) {
@@ -47,6 +48,7 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
     return subscriber; // unsubscribe on unmount
   }, [FIRE_BASE_WEB_CLIENT_ID, onAuthStateChanged]);
 
+  /* istanbul ignore next */
   const signInWithGoogle = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -65,6 +67,7 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
         user,
         signInWithGoogle,
       }}>
+      {/*istanbul ignore next*/}
       {!loadingInitial ? children : null}
       {errorAuth ?? null}
     </AuthContext.Provider>

@@ -23,8 +23,6 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: ['.generated.ts'],
   setupFiles: ['./jest.setup.js'],
-  setupFilesAfterEnv: [
-    '@testing-library/jest-native/extend-expect'
-  ],
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   testEnvironment: 'jsdom', // https://github.com/facebook/jest/issues/4359#issuecomment-506735229
 };
