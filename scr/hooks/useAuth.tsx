@@ -7,6 +7,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import Config from 'react-native-config';
@@ -14,6 +15,9 @@ import Config from 'react-native-config';
 export interface AuthContextShape {
   user?: FirebaseAuthTypes.User | null;
   signInWithGoogle?: () => Promise<void>;
+  signOut?: () => Promise<void>;
+  error?: string | null;
+  loading?: boolean;
 }
 
 const AuthContext = createContext<AuthContextShape>({});
@@ -22,14 +26,13 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
   const [errorAuth, setErrorAuth] = useState<string | null>(null);
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
   const [loadingInitial, setLoadingInitial] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  /* istanbul ignore next */
   const onAuthStateChanged = useCallback(
     (userAuth: FirebaseAuthTypes.User | null) => {
       if (userAuth) {
         setUser(userAuth);
       } else {
-        // Not logged in
         setUser(null);
       }
       setLoadingInitial(false);
@@ -49,8 +52,8 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
     return subscriber; // unsubscribe on unmount
   }, [FIRE_BASE_WEB_CLIENT_ID, onAuthStateChanged]);
 
-  /* istanbul ignore next */
   const signInWithGoogle = async () => {
+    setLoading(true);
     try {
       await GoogleSignin.hasPlayServices();
       const {idToken} = await GoogleSignin.signIn();
@@ -60,16 +63,41 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
     } catch (error: any) {
       setErrorAuth(error);
     }
+    setLoading(false);
   };
 
+  const signOut = async () => {
+    setLoading(true);
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      auth()
+        .signOut()
+        .then(() => {});
+    } catch (error: any) {
+      setErrorAuth(error);
+    }
+    setLoading(false);
+  };
+
+  /**
+   * We use useMemo here because if any of the values used in the context changes then the components that use the other ones
+   * will have to rerender, that could be an expensive operation
+   */
+  const memoedContextState = useMemo(
+    () => ({
+      user,
+      signInWithGoogle,
+      error: errorAuth,
+      loading,
+      signOut,
+    }),
+    [errorAuth, user, loading],
+  );
+
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        signInWithGoogle,
-      }}>
+    <AuthContext.Provider value={memoedContextState}>
       {!loadingInitial ? children : null}
-      {errorAuth ?? null}
     </AuthContext.Provider>
   );
 };
