@@ -1,5 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import tw from 'tailwind-rn';
 
@@ -7,11 +6,6 @@ import useAuth from '../../hooks/useAuth';
 
 const LoginScreen = (): JSX.Element => {
   const {signInWithGoogle} = useAuth();
-  const navigation = useNavigation();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({headerShown: false});
-  }, [navigation]);
 
   return (
     <View style={tw('flex-1')}>
