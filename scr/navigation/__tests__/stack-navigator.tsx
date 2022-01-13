@@ -14,7 +14,7 @@ describe('Stack navigator', (): void => {
       </NavigationContainer>,
     );
 
-    expect(component.getByText('Login to the app')).toBeTruthy();
+    expect(component.getByText('Sign in & get swapping')).toBeTruthy();
   });
 
   test('should render home page if there is a user', async (): Promise<void> => {
@@ -25,6 +25,6 @@ describe('Stack navigator', (): void => {
       </NavigationContainer>,
     );
 
-    expect(component.getByText('go to chat screen')).toBeTruthy();
+    expect(component.getByText('Niklaus Geisser')).toBeTruthy();
   });
 });
