@@ -1,7 +1,7 @@
 import {MatchUser} from '../typings';
 
 export const mockedUserNik: MatchUser = {
-  id: 6961153,
+  id: '6961153',
   firstName: 'Niklaus',
   lastName: 'Geisser',
   occupation: 'Software Engineer',
@@ -11,7 +11,7 @@ export const mockedUserNik: MatchUser = {
 };
 
 export const mockedUserJohann: MatchUser = {
-  id: 6961154,
+  id: '6961154',
   firstName: 'Johann',
   lastName: 'Geisser',
   occupation: 'Telecomunications Engineer',

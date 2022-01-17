@@ -11,6 +11,7 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.4.3",
     "@react-native-firebase/app": "^14.1.0",
     "@react-native-firebase/auth": "^14.1.0",
     "@react-native-google-signin/google-signin": "^7.0.4",

@@ -33,7 +33,7 @@ const Footer: FC = ({children}): JSX.Element => {
   );
 };
 
-const Card: FC<{id: number}> & {
+const Card: FC<{id: string}> & {
   Body: FC;
   Footer: FC;
 } = ({id, children}) => {

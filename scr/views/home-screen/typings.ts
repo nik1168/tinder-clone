@@ -4,5 +4,13 @@ export interface MatchUser {
   occupation: string;
   photoUrl: string;
   age: number;
-  id: number;
+  id: string;
+}
+
+export interface User {
+  age: number;
+  displayName: string;
+  id: string;
+  job: string;
+  photoURL: string;
 }

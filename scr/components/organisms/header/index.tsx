@@ -17,6 +17,10 @@ const Header: FC<HeaderProps> = ({photoUrl}): JSX.Element => {
     navigation.navigate(RootStackRouteNames.Chat);
   };
 
+  const onPressLogo = () => {
+    navigation.navigate(RootStackRouteNames.UserInfoModal);
+  };
+
   return (
     <View style={tw('flex-row items-center justify-between px-5')}>
       <TouchableOpacity>
@@ -25,7 +29,7 @@ const Header: FC<HeaderProps> = ({photoUrl}): JSX.Element => {
           source={{uri: photoUrl ?? ''}}
         />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPressLogo}>
         <Image
           style={tw('h-14 w-14')}
           source={require('../../../assets/images/tinder.png')}
