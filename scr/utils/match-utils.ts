@@ -17,3 +17,21 @@ export const mapUserToMatchUser = (
     occupation: mapUser.job,
   };
 };
+
+export const mapMatchUserToUser = (user: MatchUser): User => {
+  return {
+    id: user.id,
+    displayName: user.firstName + user.lastName,
+    age: user.age,
+    job: user.occupation,
+    photoURL: user.photoUrl,
+  };
+};
+
+export const generateId = (id1: string, id2: string): string => {
+  if (id1 > id2) {
+    return id1 + id2;
+  }
+
+  return id2 + id1;
+};
