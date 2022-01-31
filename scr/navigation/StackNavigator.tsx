@@ -6,6 +6,8 @@ import ChatScreen from '../views/chat-screen';
 import HomeScreen from '../views/home-screen';
 import LoginScreen from '../views/login-screen';
 import UserInfoModal from '../views/user-info-modal';
+import UserMatchModal from '../views/user-match-modal';
+import UserSignUpModal from '../views/user-sign-up-modal';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,9 +25,19 @@ const StackNavigator = () => {
           <Stack.Group screenOptions={{presentation: 'modal'}}>
             <Stack.Screen name="UserInfoModal" component={UserInfoModal} />
           </Stack.Group>
+          <Stack.Group screenOptions={{presentation: 'transparentModal'}}>
+            <Stack.Screen name="UserMatchModal" component={UserMatchModal} />
+          </Stack.Group>
         </>
       ) : (
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <>
+          <Stack.Group>
+            <Stack.Screen name="Login" component={LoginScreen} />
+          </Stack.Group>
+          <Stack.Group screenOptions={{presentation: 'modal'}}>
+            <Stack.Screen name="UserSignUpModal" component={UserSignUpModal} />
+          </Stack.Group>
+        </>
       )}
     </Stack.Navigator>
   );

@@ -8,6 +8,7 @@ export enum RootStackRouteNames {
   Chat = 'Chat',
   UserInfoModal = 'UserInfoModal',
   UserMatchModal = 'UserMatchModal',
+  UserSignUpModal = 'UserSignUpModal',
 }
 export type RootStackParams = {
   [RootStackRouteNames.Home]: undefined;
@@ -17,4 +18,5 @@ export type RootStackParams = {
     loggedInProfile: User;
     swipedUser: User;
   };
+  [RootStackRouteNames.UserSignUpModal]: undefined;
 };

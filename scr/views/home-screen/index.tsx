@@ -104,30 +104,30 @@ const HomeScreen = (): JSX.Element => {
     ).data();
     // Check if user swiped on you
 
-    getDoc(doc(db, 'users', userSwiped.id ?? 'swipes', user?.uid ?? '')).then(
-      async snapshot => {
-        const userSwipedMatched = snapshot.exists();
+    getDoc(
+      doc(db, 'users', userSwiped.id ?? '', 'swipes', user?.uid ?? ''),
+    ).then(async snapshot => {
+      const userSwipedMatched = snapshot.exists();
 
-        if (userSwipedMatched) {
-          await handleSwipe(userSwiped, 'right');
-          // Create a match
-          await handleMatch(
-            user?.uid ?? '',
-            userSwiped.id,
-            loggedInProfile as User,
-            mapMatchUserToUser(userSwiped),
-          );
+      if (userSwipedMatched) {
+        await handleSwipe(userSwiped, 'right');
+        // Create a match
+        await handleMatch(
+          user?.uid ?? '',
+          userSwiped.id,
+          loggedInProfile as User,
+          mapMatchUserToUser(userSwiped),
+        );
 
-          navigation.navigate(RootStackRouteNames.UserMatchModal, {
-            loggedInProfile: loggedInProfile as User,
-            swipedUser: mapMatchUserToUser(userSwiped),
-          });
-        } else {
-          //First match interaction started by logged-in user
-          await handleSwipe(userSwiped, 'right');
-        }
-      },
-    );
+        navigation.navigate(RootStackRouteNames.UserMatchModal, {
+          loggedInProfile: loggedInProfile as User,
+          swipedUser: mapMatchUserToUser(userSwiped),
+        });
+      } else {
+        //First match interaction started by logged-in user
+        await handleSwipe(userSwiped, 'right');
+      }
+    });
   };
 
   const onPressPass = (): void => {

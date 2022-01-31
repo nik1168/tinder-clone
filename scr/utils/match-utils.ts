@@ -6,7 +6,9 @@ export const mapUserToMatchUser = (
   document: QueryDocumentSnapshot<DocumentData>,
 ): MatchUser => {
   const mapUser: User = document.data() as User;
-  const displayName = mapUser.displayName.split(' ');
+  const displayName = mapUser.displayName
+    ? mapUser.displayName.split(' ')
+    : ' ';
 
   return {
     id: document.id,
