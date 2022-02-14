@@ -26,16 +26,16 @@ const UserMatchModal = (): JSX.Element => {
         />
       </View>
       <Text style={tw('justify-center px-10 pt-20')}>
-        You and {swipedUser.displayName} have liked each other.
+        You and {swipedUser?.displayName} have liked each other.
       </Text>
       <View style={tw('flex-row justify-evenly mt-5')}>
         <Image
           style={tw('h-32 w-32 rounded-full')}
-          source={{uri: loggedInProfile.photoURL}}
+          source={{uri: loggedInProfile?.photoURL}}
         />
         <Image
           style={tw('h-32 w-32 rounded-full')}
-          source={{uri: swipedUser.photoURL}}
+          source={{uri: swipedUser?.photoURL}}
         />
       </View>
       <TouchableOpacity

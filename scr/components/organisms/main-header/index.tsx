@@ -9,9 +9,9 @@ import {
   RootStackParams,
   RootStackRouteNames,
 } from '../../../navigation/typings';
-import {HeaderProps} from './typings';
+import {MainHeaderProps} from './typings';
 
-const Header: FC<HeaderProps> = ({photoUrl}): JSX.Element => {
+const MainHeader: FC<MainHeaderProps> = ({photoUrl}): JSX.Element => {
   const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
   const onPressChat = () => {
     navigation.navigate(RootStackRouteNames.Chat);
@@ -42,4 +42,4 @@ const Header: FC<HeaderProps> = ({photoUrl}): JSX.Element => {
   );
 };
 
-export default Header;
+export default MainHeader;

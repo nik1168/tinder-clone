@@ -37,3 +37,17 @@ export const generateId = (id1: string, id2: string): string => {
 
   return id2 + id1;
 };
+
+export const getMatchedUserInfo = (
+  users: Record<string, User>,
+  userLoggedIn: string,
+): User => {
+  const newUsers = {...users};
+
+  delete newUsers[userLoggedIn];
+  const [id, user] = Object.entries(newUsers).flat();
+  const objectUser = user as User;
+  const parsedId = id as string;
+
+  return {...objectUser, id: parsedId};
+};

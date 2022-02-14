@@ -25,6 +25,6 @@ describe('Stack navigator', (): void => {
       </NavigationContainer>,
     );
 
-    expect(component.getByText('Niklaus Geisser')).toBeTruthy();
+    expect(component.getByTestId('home-container')).toBeTruthy();
   });
 });

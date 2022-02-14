@@ -26,7 +26,7 @@ import {db} from '../../../firebase';
 import ActionCardBlock from '../../components/molecules/action-card-block';
 import CardItem from '../../components/organisms/card-item';
 import CardNoResults from '../../components/organisms/card-no-results';
-import Header from '../../components/organisms/header';
+import MainHeader from '../../components/organisms/main-header';
 import useAuth from '../../hooks/useAuth';
 import {RootStackParams, RootStackRouteNames} from '../../navigation/typings';
 import {
@@ -210,8 +210,8 @@ const HomeScreen = (): JSX.Element => {
   }, [user?.uid, getCollectionIds]);
 
   return (
-    <SafeAreaView style={tw('flex-1')}>
-      <Header photoUrl={user?.photoURL} />
+    <SafeAreaView style={tw('flex-1')} testID={'home-container'}>
+      <MainHeader photoUrl={user?.photoURL} />
       <View style={tw('flex-1 -mt-6')}>
         <Swiper
           ref={swipeRef}

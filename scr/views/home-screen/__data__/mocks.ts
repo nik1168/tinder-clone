@@ -1,4 +1,4 @@
-import {MatchUser} from '../typings';
+import {MatchUser, User} from '../typings';
 
 export const mockedUserNik: MatchUser = {
   id: '6961153',
@@ -17,6 +17,15 @@ export const mockedUserJohann: MatchUser = {
   occupation: 'Telecomunications Engineer',
   age: 27,
   photoUrl:
+    'https://static.wixstatic.com/media/6e7f85_8a1f7d708637402e94be3db48565b697~mv2.jpg/v1/fill/w_1125,h_1110,al_c/6e7f85_8a1f7d708637402e94be3db48565b697~mv2.jpg',
+};
+
+export const mockedUserNicole: User = {
+  id: '6961154',
+  displayName: 'Nicole Geisser',
+  job: 'Telecomunications Engineer',
+  age: 27,
+  photoURL:
     'https://static.wixstatic.com/media/6e7f85_8a1f7d708637402e94be3db48565b697~mv2.jpg/v1/fill/w_1125,h_1110,al_c/6e7f85_8a1f7d708637402e94be3db48565b697~mv2.jpg',
 };
 
