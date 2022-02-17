@@ -15,7 +15,7 @@ const ChatList: FC<ChatListProps> = ({usersMatched}): JSX.Element => {
               style={tw('h-full')}
               data={usersMatched}
               keyExtractor={item => item.id}
-              renderItem={({item}) => <ChatItem matchDetails={item.users} />}
+              renderItem={({item}) => <ChatItem matchDetails={item} />}
             />
           ) : (
             <View style={tw('p-5')}>

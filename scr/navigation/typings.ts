@@ -1,6 +1,7 @@
 /**
  * RootStack
  */
+import {UserMatch} from '../components/organisms/chat-list/typings';
 import {User} from '../views/home-screen/typings';
 
 export enum RootStackRouteNames {
@@ -15,7 +16,7 @@ export type RootStackParams = {
   [RootStackRouteNames.Home]: undefined;
   [RootStackRouteNames.Chat]: undefined;
   [RootStackRouteNames.Messaging]: {
-    userMatch: User;
+    userMatch: UserMatch;
   };
   [RootStackRouteNames.UserInfoModal]: undefined;
   [RootStackRouteNames.UserMatchModal]: {

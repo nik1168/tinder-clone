@@ -15,11 +15,7 @@ import Config from 'react-native-config';
 export interface AuthContextShape {
   user?: FirebaseAuthTypes.User | null;
   signInWithGoogle?: () => Promise<void>;
-  signInWithEmail?: (
-    email: string,
-    password: string,
-    name: string,
-  ) => Promise<void>;
+  signInWithEmail?: (email: string, password: string) => Promise<void>;
   signOut?: () => Promise<void>;
   error?: string | null;
   loading?: boolean;
@@ -52,21 +48,14 @@ export const AuthProvider: FC = ({children}): JSX.Element => {
       webClientId: FIRE_BASE_WEB_CLIENT_ID,
       offlineAccess: true,
     });
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
 
-    return subscriber; // unsubscribe on unmount
+    return auth().onAuthStateChanged(onAuthStateChanged); // unsubscribe on unmount
   }, [FIRE_BASE_WEB_CLIENT_ID, onAuthStateChanged]);
 
-  const signInWithEmail = async (
-    email: string,
-    password: string,
-    name: string,
-  ) => {
+  const signInWithEmail = async (email: string, password: string) => {
     setLoading(true);
     try {
       await auth().createUserWithEmailAndPassword(email, password);
-      console.log('name');
-      console.log(name);
     } catch (error: any) {
       setErrorAuth(error);
       throw new Error(error);

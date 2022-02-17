@@ -29,7 +29,7 @@ const UserSignUpModal = (): JSX.Element => {
   const signUp = () => {
     setLoading(true);
     if (signInWithEmail) {
-      signInWithEmail(email, password, name)
+      signInWithEmail(email, password)
         .then(() => {
           setLoading(false);
           navigation.navigate(RootStackRouteNames.Home);

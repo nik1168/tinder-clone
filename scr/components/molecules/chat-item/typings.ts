@@ -1,5 +1,5 @@
-import {User} from '../../../views/home-screen/typings';
+import {UserMatch} from '../../organisms/chat-list/typings';
 
 export interface ChatItemProps {
-  matchDetails: Record<string, User>;
+  matchDetails: UserMatch;
 }
