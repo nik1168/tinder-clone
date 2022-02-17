@@ -44,7 +44,7 @@ const MessagesScreen = (): JSX.Element => {
     () =>
       onSnapshot(
         query(
-          collection(db, 'matches', userMatch.id, 'messages'),
+          collection(db, 'matches', userMatch?.id, 'messages'),
           orderBy('timestamp', 'desc'),
         ),
         snapshot => {
@@ -62,7 +62,7 @@ const MessagesScreen = (): JSX.Element => {
           setMessages(messagesData);
         },
       ),
-    [userMatch.id],
+    [userMatch?.id],
   );
 
   const sendMessage = async () => {
@@ -80,7 +80,7 @@ const MessagesScreen = (): JSX.Element => {
     <SafeAreaView style={tw('flex-1')}>
       <ViewHeader
         title={
-          getMatchedUserInfo(userMatch.users, user?.uid ?? '')?.displayName
+          getMatchedUserInfo(userMatch?.users, user?.uid ?? '')?.displayName
         }
         callEnabled
       />
