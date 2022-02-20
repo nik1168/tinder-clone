@@ -39,13 +39,13 @@ npm run android
 ## Demo
 
 ###Main Screen
-<img src="demo/main_view_p_1.png"  alt="mv1">
-<img src="demo/main_view_p2.png"  alt="mv2">
+<img src="demo/main_view_p_1.png" height="900" width="500"  alt="mv1">
+<img src="demo/main_view_p2.png" height="900" width="500"   alt="mv2">
 
 ###Match
-<img src="demo/match.png"  alt="match">
+<img src="demo/match.png" height="900" width="500"  alt="match">
 
 ###Chat
-<img src="demo/chat_main.png"  alt="mv1">
-<img src="demo/chat_one.png"  alt="mv1">
-<img src="demo/chat_two.png"  alt="mv1">
+<img src="demo/chat_main.png" height="900" width="500"  alt="mv1">
+<img src="demo/chat_one.png" height="900" width="500"  alt="mv1">
+<img src="demo/chat_two.png" height="900" width="500"  alt="mv1">
