@@ -5,6 +5,9 @@ Building a Tinder clone using React Native and Typescript with the following fea
 - Swipe-able cards with swipe animations
 - Matching algorithm using Firestore as a persistence layer
 
+Special thanks to Sonny Sangha as this project was based on his tinder clone tutorial:
+https://youtu.be/qJaFIGjyRms
+
 ## Tech Stack
 - Tailwind CSS
 - Jest
