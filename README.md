@@ -10,5 +10,6 @@ Building a Tinder clone using React Native and Typescript with the following fea
 - Jest
 - Firebase
 - React Native CLI
+- Circle CI 
 
 

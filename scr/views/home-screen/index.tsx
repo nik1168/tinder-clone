@@ -210,7 +210,7 @@ const HomeScreen = (): JSX.Element => {
   }, [user?.uid, getCollectionIds]);
 
   return (
-    <SafeAreaView style={tw('flex-1')} testID={'home-container'}>
+    <SafeAreaView style={tw('flex-1 mb-5')} testID={'home-container'}>
       <MainHeader photoUrl={user?.photoURL} />
       <View style={tw('flex-1 -mt-6')}>
         <Swiper
