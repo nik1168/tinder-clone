@@ -38,6 +38,8 @@ npm run android
 
 ## Demo
 
+https://drive.google.com/file/d/1h5vptGyMDWTRGNXvaTXjHp1BCr-LZ6gF/view?usp=sharing
+
 ### Main Screen
   
 <img src="demo/main_view_p_1.png" height="900" width="500"  alt="mv1">
